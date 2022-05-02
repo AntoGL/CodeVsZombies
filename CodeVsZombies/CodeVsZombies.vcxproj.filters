@@ -16,6 +16,9 @@
     <Filter Include="CvZ">
       <UniqueIdentifier>{02e2bbbf-fe46-4d93-8931-32b9e96ea8e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CvZ\Geometry">
+      <UniqueIdentifier>{baff7dd5-acf4-4890-8e88-11ba7543e19c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -23,6 +26,9 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>CvZ\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +40,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>CvZ</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>CvZ\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

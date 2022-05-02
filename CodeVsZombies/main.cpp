@@ -2,28 +2,9 @@
 #include <iostream>
 #include <map>
 #include <set>
-#include <cmath>
+#include "Point.h"
 
 using namespace std;
-
-struct Point
-{
-    int x;
-    int y;
-
-    Point(int x, int y)
-        : x(x), y(y)
-    {
-
-    }
-};
-
-inline double distanceD(const Point& A, const Point& B)
-{
-    int dx = A.x - B.x;
-    int dy = A.y - B.y;
-    return std::sqrt(dx * dx + dy * dy);
-}
 
 class Unit
 {
