@@ -39,6 +39,9 @@
     <ClInclude Include="Zombie.h">
       <Filter>CvZ\Units</Filter>
     </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>CvZ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -58,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>CvZ\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>CvZ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
