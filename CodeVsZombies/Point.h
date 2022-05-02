@@ -7,6 +7,7 @@ struct Point
     int y;
 
     constexpr Point(int x, int y);
+    constexpr double DistanceTo(const Point& point) const;
 };
 
 inline double distanceD(const Point& a, const Point& b)
