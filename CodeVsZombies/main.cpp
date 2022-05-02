@@ -4,29 +4,9 @@
 #include <set>
 #include "Point.h"
 #include "Unit.h"
+#include "Zombie.h"
 
 using namespace std;
-
-class Zombie
-    : public Unit
-{
-    int _nextX;
-    int _nextY;
-
-protected:
-    void UpdateImpl(istream& in) override
-    {
-        Unit::UpdateImpl(in);
-
-        in >> _nextX >> _nextY;
-    }
-
-public:
-    Zombie() : Unit()
-    {
-
-    }
-};
 
 class Game
 {

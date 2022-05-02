@@ -36,6 +36,9 @@
     <ClInclude Include="Unit.h">
       <Filter>CvZ\Units</Filter>
     </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>CvZ\Units</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -51,6 +54,9 @@
       <Filter>CvZ\Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
+      <Filter>CvZ\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
       <Filter>CvZ\Units</Filter>
     </ClCompile>
   </ItemGroup>
