@@ -19,6 +19,9 @@
     <Filter Include="CvZ\Geometry">
       <UniqueIdentifier>{baff7dd5-acf4-4890-8e88-11ba7543e19c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CvZ\Units">
+      <UniqueIdentifier>{1dd91a03-3fc6-437b-8676-79de43db1bc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -29,6 +32,9 @@
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>CvZ\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>CvZ\Units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>CvZ\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>CvZ\Units</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

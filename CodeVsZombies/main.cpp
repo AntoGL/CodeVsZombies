@@ -3,43 +3,9 @@
 #include <map>
 #include <set>
 #include "Point.h"
+#include "Unit.h"
 
 using namespace std;
-
-class Unit
-{
-    int _x;
-    int _y;
-
-protected:
-    virtual void UpdateImpl(istream& in)
-    {
-        in >> _x >> _y;
-    }
-
-public:
-    Unit(int x, int y)
-        :_x(x), _y(y)
-    {}
-
-    Unit() : Unit(0, 0)
-    {
-
-    }
-
-    virtual ~Unit() = default;
-
-    void Update(istream& in)
-    {
-        UpdateImpl(in);
-        in.ignore();
-    }
-
-    Point GetCoord() const
-    {
-        return Point(_x, _y);
-    }
-};
 
 class Zombie
     : public Unit
