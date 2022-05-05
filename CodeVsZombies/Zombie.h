@@ -4,8 +4,7 @@
 class Zombie final
 	: public Unit
 {
-    int nextX;
-    int nextY;
+    Point nextCoordinate;
 
 public:
     Zombie(int id, int x, int y, int nextX, int nextY);

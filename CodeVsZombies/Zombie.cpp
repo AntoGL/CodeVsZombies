@@ -3,7 +3,6 @@
 
 Zombie::Zombie(const int id, const int x, const int y, const int nextX, const int nextY)
 	: Unit(id, x, y)
-	, nextX(nextX)
-	, nextY(nextY)
+	, nextCoordinate(nextX, nextY)
 {
 }
