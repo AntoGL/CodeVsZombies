@@ -1,6 +1,26 @@
 #include "pch.h"
 #include "GameState.h"
 
+const Unit& GameState::GetAsh() const
+{
+	return Ash;
+}
+
+const Unit& GameState::GetHuman(const int id) const
+{
+	return humans.at(id);
+}
+
+const Humans& GameState::GetHumans() const
+{
+	return humans;
+}
+
+const Zombie& GameState::GetZombie(const int id) const
+{
+	return zombies.at(id);
+}
+
 void GameState::Clear()
 {
 	Ash = Unit(0, 0);

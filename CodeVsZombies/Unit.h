@@ -1,9 +1,10 @@
 #pragma once
+#include "Point.h"
+
 class Unit
 {
     int id;
-    int x;
-    int y;
+    Point coordinate;
 
 public:
     Unit();
@@ -11,5 +12,9 @@ public:
     Unit(int id, int x, int y);
     virtual ~Unit() = default;
 
+    operator const Point& () const;
+
     int GetId() const;
+
+    double DistanceTo(const Point& point) const;
 };

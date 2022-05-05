@@ -2,9 +2,11 @@
 #include <unordered_map>
 #include "Zombie.h"
 
+using Humans = std::unordered_map<int, Unit>;
+
 class GameState
 {
-    std::unordered_map<int, Unit> humans;
+    Humans humans;
     std::unordered_map<int, Zombie> zombies;
     Unit Ash;
 
@@ -17,6 +19,11 @@ public:
 
     GameState& operator=(const GameState&) = delete;
     GameState& operator=(GameState&&) = delete;
+
+    const Unit& GetAsh() const;
+    const Unit& GetHuman(int id) const;
+    const Humans& GetHumans() const;
+    const Zombie& GetZombie(int id) const;
 
     void Clear();
 

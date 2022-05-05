@@ -45,6 +45,9 @@
     <ClInclude Include="GameStateReader.h">
       <Filter>CvZ</Filter>
     </ClInclude>
+    <ClInclude Include="ZombieKiller.h">
+      <Filter>CvZ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -69,6 +72,9 @@
       <Filter>CvZ</Filter>
     </ClCompile>
     <ClCompile Include="GameStateReader.cpp">
+      <Filter>CvZ</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieKiller.cpp">
       <Filter>CvZ</Filter>
     </ClCompile>
   </ItemGroup>
