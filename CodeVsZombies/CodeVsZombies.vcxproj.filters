@@ -19,7 +19,10 @@
     <Filter Include="CvZ\Geometry">
       <UniqueIdentifier>{baff7dd5-acf4-4890-8e88-11ba7543e19c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CvZ\Units">
+    <Filter Include="CvZ\Game">
+      <UniqueIdentifier>{5b4d625a-211f-4ae5-b244-dd85664c9670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CvZ\Game\Units">
       <UniqueIdentifier>{1dd91a03-3fc6-437b-8676-79de43db1bc2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -34,19 +37,22 @@
       <Filter>CvZ\Geometry</Filter>
     </ClInclude>
     <ClInclude Include="Unit.h">
-      <Filter>CvZ\Units</Filter>
+      <Filter>CvZ\Game\Units</Filter>
     </ClInclude>
     <ClInclude Include="Zombie.h">
-      <Filter>CvZ\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>CvZ</Filter>
+      <Filter>CvZ\Game\Units</Filter>
     </ClInclude>
     <ClInclude Include="GameStateReader.h">
-      <Filter>CvZ</Filter>
+      <Filter>CvZ\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>CvZ\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConst.h">
+      <Filter>CvZ\Game</Filter>
     </ClInclude>
     <ClInclude Include="ZombieKiller.h">
-      <Filter>CvZ</Filter>
+      <Filter>CvZ\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,19 +69,19 @@
       <Filter>CvZ\Geometry</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
-      <Filter>CvZ\Units</Filter>
+      <Filter>CvZ\Game\Units</Filter>
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
-      <Filter>CvZ\Units</Filter>
+      <Filter>CvZ\Game\Units</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
-      <Filter>CvZ</Filter>
+      <Filter>CvZ\Game</Filter>
     </ClCompile>
     <ClCompile Include="GameStateReader.cpp">
-      <Filter>CvZ</Filter>
+      <Filter>CvZ\Game</Filter>
     </ClCompile>
     <ClCompile Include="ZombieKiller.cpp">
-      <Filter>CvZ</Filter>
+      <Filter>CvZ\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

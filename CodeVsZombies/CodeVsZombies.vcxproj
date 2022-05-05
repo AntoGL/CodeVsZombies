@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameConst.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateReader.h" />
     <ClInclude Include="pch.h" />
