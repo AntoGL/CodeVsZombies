@@ -4,12 +4,9 @@
 class Zombie final
 	: public Unit
 {
-    int _nextX;
-    int _nextY;
-
-protected:
-    void UpdateImpl(std::istream& in) override;
+    int nextX;
+    int nextY;
 
 public:
-    Zombie();
+    Zombie(int id, int x, int y, int nextX, int nextY);
 };

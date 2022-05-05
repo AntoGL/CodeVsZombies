@@ -42,6 +42,9 @@
     <ClInclude Include="GameState.h">
       <Filter>CvZ</Filter>
     </ClInclude>
+    <ClInclude Include="GameStateReader.h">
+      <Filter>CvZ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -63,6 +66,9 @@
       <Filter>CvZ\Units</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
+      <Filter>CvZ</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateReader.cpp">
       <Filter>CvZ</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,8 +1,6 @@
 #include "pch.h"
 #include <iostream>
-#include "Point.h"
-#include "Unit.h"
-#include "GameState.h"
+#include "GameStateReader.h"
 
 using namespace std;
 
@@ -12,11 +10,8 @@ int main()
 
     while (true)
     {
-        game.ReadState(cin);
-        const auto& p = game.GetTargetPoint();
-        // Write an action using cout. DON'T FORGET THE "<< endl"
-        // To debug: cerr << "Debug messages..." << endl;
+        GameStateReader::Read(game, std::cin);
 
-        cout << p.x << " " << p.y << endl; // Your destination coordinates
+    	cout << "0 0" << endl;
     }
 }

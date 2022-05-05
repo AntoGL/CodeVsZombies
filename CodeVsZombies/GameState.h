@@ -1,30 +1,26 @@
 #pragma once
-#include <map>
-#include <set>
+#include <unordered_map>
 #include "Zombie.h"
 
 class GameState
 {
-    std::map<int, Unit*> _humans;
-    std::map<int, Unit*> _zombies;
-    std::set<int> _notUpdatedUnitIds;
-    Unit* Ash;
+    std::unordered_map<int, Unit> humans;
+    std::unordered_map<int, Zombie> zombies;
+    Unit Ash;
 
 public:
-    GameState();
-    ~GameState();
+    GameState() = default;
+    ~GameState() = default;
 
-    void ReadState(std::istream& in);
+    GameState(const GameState&) = delete;
+    GameState(GameState&&) = delete;
 
-    double MinDistanceToZombie(const Point& p);
+    GameState& operator=(const GameState&) = delete;
+    GameState& operator=(GameState&&) = delete;
 
-    Point GetTargetPoint();
+    void Clear();
 
-private:
-    void SetAllUnitsNotUpdated();
-    void ReadHuman(std::istream& in);
-    void ReadZombies(std::istream& in);
-    void ReadUnit(std::map<int, Unit*>& units, std::istream& in, Unit* (*CreateNewUnit)());
-    static int ReadId(std::istream& in);
-    void ClearNotUpdatedUnits();
+    void SetAshCoordinate(int x, int y);
+    void AddHuman(const Unit& human);
+    void AddZombie(const Zombie& zombie);
 };

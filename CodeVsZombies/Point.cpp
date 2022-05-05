@@ -5,7 +5,7 @@ constexpr Point::Point(const int x, const int y) : x(x), y(y)
 {
 }
 
-constexpr double Point::DistanceTo(const Point& point) const
+double Point::DistanceTo(const Point& point) const
 {
     const int dx = x - point.x;
     const int dy = y - point.y;

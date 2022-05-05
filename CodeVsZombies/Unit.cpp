@@ -1,25 +1,22 @@
 #include "pch.h"
 #include "Unit.h"
 
-Unit::Unit(const int x, const int y) : x(x), y(y)
-{}
-
-Unit::Unit() : x(0), y(0)
+Unit::Unit()
+	: id(-1), x(0), y(0)
 {
 }
 
-Point Unit::GetCoord() const
+Unit::Unit(const int x, const int y)
+	: id(-1), x(x), y(y)
 {
-	return {x, y};
 }
 
-void Unit::Update(std::istream& in)
+Unit::Unit(const int id, const int x, const int y)
+	: id(id), x(x), y(y)
 {
-	UpdateImpl(in);
-	in.ignore();
 }
 
-void Unit::UpdateImpl(std::istream& in)
+int Unit::GetId() const
 {
-	in >> x >> y;
+	return id;
 }
