@@ -21,6 +21,16 @@ const Zombie& GameState::GetZombie(const int id) const
 	return zombies.at(id);
 }
 
+const Zombies& GameState::GetZombies() const
+{
+	return zombies;
+}
+
+Zombies& GameState::GetZombies()
+{
+	return zombies;
+}
+
 void GameState::Clear()
 {
 	Ash = Unit(0, 0);
@@ -38,7 +48,17 @@ void GameState::AddHuman(const Unit& human)
 	humans.insert_or_assign(human.GetId(), human);
 }
 
+void GameState::RemoveHuman(const int id)
+{
+	humans.erase(id);
+}
+
 void GameState::AddZombie(const Zombie& zombie)
 {
 	zombies.insert_or_assign(zombie.GetId(), zombie);
+}
+
+void GameState::RemoveZombie(const int id)
+{
+	zombies.erase(id);
 }

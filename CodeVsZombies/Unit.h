@@ -15,6 +15,9 @@ public:
     operator const Point& () const;
 
     int GetId() const;
+    void SetCoordinate(const Point& point);
+    Point& GetCoordinate();
+    const Point& GetCoordinate() const;
 
     double DistanceTo(const Point& point) const;
 };

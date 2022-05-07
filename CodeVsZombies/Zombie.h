@@ -8,4 +8,8 @@ class Zombie final
 
 public:
     Zombie(int id, int x, int y, int nextX, int nextY);
+
+    void SetNextCoordinate(const Point& point);
+    Point& GetNextCoordinate();
+    const Point& GetNextCoordinate() const;
 };

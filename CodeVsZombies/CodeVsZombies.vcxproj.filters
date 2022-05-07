@@ -54,6 +54,12 @@
     <ClInclude Include="ZombieKiller.h">
       <Filter>CvZ\Game</Filter>
     </ClInclude>
+    <ClInclude Include="GameReferee.h">
+      <Filter>CvZ\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>CvZ\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -82,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="ZombieKiller.cpp">
       <Filter>CvZ\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameReferee.cpp">
+      <Filter>CvZ\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>CvZ\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
