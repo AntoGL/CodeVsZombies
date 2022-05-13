@@ -60,6 +60,9 @@
     <ClInclude Include="Vector.h">
       <Filter>CvZ\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="export.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
