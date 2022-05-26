@@ -4,11 +4,6 @@
 using namespace testing;
 using namespace std;
 
-struct DistanceToFixture : TestWithParam<tuple<Point, Point, double>>
-{
-	
-};
-
 void DistanceTo_TestCase(const Point& p1, const Point& p2, const double expectedDistance)
 {
 	const double distance = p1.DistanceTo(p2);
