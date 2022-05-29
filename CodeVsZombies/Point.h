@@ -1,7 +1,7 @@
 #pragma once
 #include "export.h"
 
-CVZ_EXPORT struct Point
+struct Point
 {
     int x;
     int y;
