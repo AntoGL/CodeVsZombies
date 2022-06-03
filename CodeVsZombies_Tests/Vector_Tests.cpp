@@ -32,7 +32,7 @@ struct Vector_OperatorSumPointVector_Fixture : TestWithParam<tuple<Point, Vector
 };
 
 INSTANTIATE_TEST_CASE_P(
-	OperatorSum,
+	OperatorSum_Integer,
 	Vector_OperatorSumPointVector_Fixture,
 	Values(
 		make_tuple(Point(0, 0), Vector(0, 0), Point(0, 0)),
@@ -43,6 +43,19 @@ INSTANTIATE_TEST_CASE_P(
 		make_tuple(Point(2, 3), Vector(1, 4), Point(3, 7)),
 		make_tuple(Point(2, 3), Vector(4, 1), Point(6, 4)),
 		make_tuple(Point(2, 3), Vector(4, 4), Point(6, 7))
+	)
+);
+
+INSTANTIATE_TEST_CASE_P(
+	OperatorSum_Real,
+	Vector_OperatorSumPointVector_Fixture,
+	Values(
+		make_tuple(Point(0, 0), Vector(0.1, 0), Point(0, 0)),
+		make_tuple(Point(0, 0), Vector(0, 0.1), Point(0, 0)),
+		make_tuple(Point(0, 0), Vector(0.1, 0.1), Point(0, 0)),
+		make_tuple(Point(0, 0), Vector(0, 0.9), Point(0, 0)),
+		make_tuple(Point(0, 0), Vector(0.9, 0), Point(0, 0)),
+		make_tuple(Point(0, 0), Vector(0.9, 0.9), Point(0, 0))
 	)
 );
 
@@ -92,4 +105,50 @@ TEST_P(Vector_OperatorDifPointPoint_Fixture, PointPoint)
 
 	ASSERT_EQ(expectedResult.x, result.x);
 	ASSERT_EQ(expectedResult.y, result.y);
+}
+
+struct Vector_SetLength_Fixture : TestWithParam<tuple<Vector, double, Vector>>
+{
+	
+};
+
+INSTANTIATE_TEST_CASE_P(
+	SetLength,
+	Vector_SetLength_Fixture,
+	Values(
+		make_tuple(Vector(1, 0), 2, Vector(2, 0))
+		, make_tuple(Vector(0, 1), 2, Vector(0, 2))
+		, make_tuple(Vector(2, 0), 1, Vector(1, 0))
+		, make_tuple(Vector(0, 2), 1, Vector(0, 1))
+		, make_tuple(Vector(0, 2), 0, Vector(0, 0))
+	)
+);
+
+INSTANTIATE_TEST_CASE_P(
+	ReturnZeroVector,
+	Vector_SetLength_Fixture,
+	Combine(
+		Values(
+			Vector(0, 0)
+			, Vector(0, 1)
+			, Vector(1, 0)
+			, Vector(1, 1)
+			, Vector(3, 2)
+			, Vector(8, -3)
+			, Vector(-7, 4)
+			, Vector(-97, -44)
+		)
+		, Values(0)
+		, Values(Vector(0, 0)))
+);
+
+TEST_P(Vector_SetLength_Fixture, Case)
+{
+	auto [vector, length, expectedVector] = GetParam();
+
+	vector.SetLength(length);
+
+	ASSERT_EQ(expectedVector.GetLength(), vector.GetLength());
+	ASSERT_EQ(expectedVector.x, vector.x);
+	ASSERT_EQ(expectedVector.y, vector.y);
 }

@@ -21,6 +21,9 @@ double Vector::GetLength() const
 void Vector::SetLength(const double value)
 {
 	const double length = GetLength();
+	if (length == 0)
+		return;
+
 	const double p = value / length;
 	x *= p;
 	y *= p;
