@@ -47,7 +47,13 @@ void GameReferee::MoveZombie(Zombie& zombie)
 
 void GameReferee::MoveAsh(const Point& action) const
 {
-	game->SetAshCoordinate(action.x, action.y);
+	const Point ashCoord = game->GetAsh();
+	Vector move = action - ashCoord;
+	if (move.GetLength() > ASH_SPEED)
+		move.SetLength(ASH_SPEED);
+
+	const Point nextState = ashCoord + move;
+	game->SetAshCoordinate(nextState.x, nextState.y);
 }
 
 void GameReferee::DestroyZombies() const

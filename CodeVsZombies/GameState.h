@@ -13,16 +13,16 @@ class GameState
     Unit Ash;
 
 public:
-    GameState() = default;
+    CVZ_EXPORT GameState() = default;
     ~GameState() = default;
 
-    GameState(const GameState&) = delete;
-    GameState(GameState&&) = delete;
+    CVZ_EXPORT GameState(const GameState&) = delete;
+    CVZ_EXPORT GameState(GameState&&) = delete;
 
-    GameState& operator=(const GameState&) = delete;
-    GameState& operator=(GameState&&) = delete;
+    CVZ_EXPORT GameState& operator=(const GameState&) = delete;
+    CVZ_EXPORT GameState& operator=(GameState&&) = delete;
 
-    const Unit& GetAsh() const;
+    CVZ_EXPORT const Unit& GetAsh() const;
     const Unit& GetHuman(int id) const;
     const Humans& GetHumans() const;
     const Zombie& GetZombie(int id) const;
@@ -31,7 +31,7 @@ public:
 
     void Clear();
 
-    void SetAshCoordinate(int x, int y);
+    CVZ_EXPORT void SetAshCoordinate(int x, int y);
     void AddHuman(const Unit& human);
     void RemoveHuman(int id);
     void AddZombie(const Zombie& zombie);

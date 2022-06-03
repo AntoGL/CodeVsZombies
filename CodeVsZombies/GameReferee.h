@@ -6,10 +6,10 @@ class GameReferee
 	GameStatePtr game;
 
 public:
-	GameReferee() = default;
+	CVZ_EXPORT GameReferee() = default;
 
-	void SetGameState(const GameStatePtr& gameState);
-	void Turn(const Point& action);
+	CVZ_EXPORT void SetGameState(const GameStatePtr& gameState);
+	CVZ_EXPORT void Turn(const Point& action);
 
 private:
 	void MoveZombies();
