@@ -17,7 +17,7 @@ struct GameReferee_MoveAsh_Tests : TestWithParam<tuple<Point, Point, Point>>
 		return move(gameState);
 	}
 
-	static GameReferee CreateReferee(GameStatePtr gameState)
+	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
 		auto referee = GameReferee();
 		referee.SetGameState(gameState);
@@ -39,10 +39,10 @@ INSTANTIATE_TEST_CASE_P(
 			make_tuple(Point(0, 0), Point(-1, -1), Point(-1, -1)),
 			make_tuple(Point(0, 0), Point(MOVE_RANGE, 0), Point(MOVE_RANGE, 0)),
 			make_tuple(Point(0, 0), Point(0, MOVE_RANGE), Point(0, MOVE_RANGE)),
-			make_tuple(Point(0, 0), Point(MOVE_RANGE, MOVE_RANGE), Point(MOVE_RANGE, MOVE_RANGE)),
+			make_tuple(Point(0, 0), Point(707, 707), Point(707, 707)),
 			make_tuple(Point(0, 0), Point(-MOVE_RANGE, 0), Point(-MOVE_RANGE, 0)),
 			make_tuple(Point(0, 0), Point(0, -MOVE_RANGE), Point(0, -MOVE_RANGE)),
-			make_tuple(Point(0, 0), Point(-MOVE_RANGE, -MOVE_RANGE), Point(-MOVE_RANGE, -MOVE_RANGE))
+			make_tuple(Point(0, 0), Point(-707, -707), Point(-707, -707))
 		)
 );
 
