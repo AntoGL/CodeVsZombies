@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "../CodeVsZombies/GameReferee.h"
-#include "../CodeVsZombies/GameConst.h"
+#include "GameReferee.h"
+#include "GameConst.h"
 
 using namespace std;
 using namespace testing;

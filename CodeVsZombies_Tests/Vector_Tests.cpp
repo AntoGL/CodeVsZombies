@@ -1,7 +1,5 @@
 #include "pch.h"
-#include "../CodeVsZombies/Vector.h"
-
-//https://www.sandordargo.com/blog/2019/04/24/parameterized-testing-with-gtest#parameterized-tests-what-are-they-parameterizedtests
+#include "Vector.h"
 
 using namespace std;
 using namespace testing;

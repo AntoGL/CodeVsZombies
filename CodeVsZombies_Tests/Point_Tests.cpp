@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../CodeVsZombies/Point.h"
+#include "Point.h"
 
 using namespace testing;
 using namespace std;
