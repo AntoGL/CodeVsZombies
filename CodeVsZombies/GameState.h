@@ -27,14 +27,14 @@ public:
     const Humans& GetHumans() const;
     const Zombie& GetZombie(int id) const;
     const Zombies& GetZombies() const;
-    Zombies& GetZombies();
+    CVZ_EXPORT Zombies& GetZombies();
 
     void Clear();
 
     CVZ_EXPORT void SetAshCoordinate(int x, int y);
     void AddHuman(const Unit& human);
     void RemoveHuman(int id);
-    void AddZombie(const Zombie& zombie);
+    CVZ_EXPORT void AddZombie(const Zombie& zombie);
     void RemoveZombie(int id);
 };
 
