@@ -9,7 +9,7 @@ class Unit
 public:
     Unit();
     Unit(int x, int y);
-    Unit(int id, int x, int y);
+    CVZ_EXPORT Unit(int id, int x, int y);
     virtual ~Unit() = default;
 
     CVZ_EXPORT operator const Point& () const;

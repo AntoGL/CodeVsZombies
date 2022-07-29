@@ -30,7 +30,7 @@ void GameReferee::MoveZombie(Zombie& zombie)
 	double minD = zombie.DistanceTo(targetPoint);
 	for (auto& human : game->GetHumans())
 	{
-		const double d = zombie.DistanceTo(human.second) < minD;
+		const double d = zombie.DistanceTo(human.second);
 		if (d < minD)
 		{
 			minD = d;

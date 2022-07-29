@@ -24,7 +24,7 @@ public:
 
     CVZ_EXPORT const Unit& GetAsh() const;
     const Unit& GetHuman(int id) const;
-    const Humans& GetHumans() const;
+    CVZ_EXPORT const Humans& GetHumans() const;
     const Zombie& GetZombie(int id) const;
     const Zombies& GetZombies() const;
     CVZ_EXPORT Zombies& GetZombies();
@@ -32,7 +32,7 @@ public:
     void Clear();
 
     CVZ_EXPORT void SetAshCoordinate(int x, int y);
-    void AddHuman(const Unit& human);
+    CVZ_EXPORT void AddHuman(const Unit& human);
     void RemoveHuman(int id);
     CVZ_EXPORT void AddZombie(const Zombie& zombie);
     void RemoveZombie(int id);
