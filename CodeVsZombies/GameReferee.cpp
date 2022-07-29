@@ -62,7 +62,7 @@ void GameReferee::DestroyZombies() const
 	std::unordered_set<int> destroyedZombieIds;
 	for (auto& zombie : game->GetZombies())
 	{
-		if (ashCoordinate.DistanceTo(zombie.second) < ASH_ATTACK_RANGE)
+		if (ashCoordinate.DistanceTo(zombie.second) <= ASH_ATTACK_RANGE)
 			destroyedZombieIds.emplace(zombie.first);
 	}
 

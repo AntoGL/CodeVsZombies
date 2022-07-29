@@ -207,3 +207,68 @@ TEST_P(GameReferee_MoveZombie_Tests, Case)
 		ASSERT_EQ(expectedZombieCoordinate.y, zombieCoordinate.y);
 	}
 }
+
+class GameReferee_DestoyZombie_Tests : public GameReferee_Tests, public TestWithParam<tuple<vector<Point>, vector<int>>>
+{
+public:
+	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate)
+	{
+		constexpr Point ashCoordinate(ASH_SAFE_RANGE, ASH_SAFE_RANGE);
+		return GameReferee_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, vector<Point>());
+	}
+
+	static GameReferee CreateReferee(const GameStatePtr& gameState)
+	{
+		return GameReferee_Tests::CreateReferee(gameState);
+	}
+};
+
+INSTANTIATE_TEST_CASE_P(
+	ZombieInAshAtackRange_ShouldBeDestroyed,
+	GameReferee_DestoyZombie_Tests,
+	Values(
+		make_tuple(vector{ Point(1, ASH_SAFE_RANGE) }, vector<int>()),
+		make_tuple(vector{ Point(2 * ASH_SAFE_RANGE - 1, ASH_SAFE_RANGE) }, vector<int>()),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 1) }, vector<int>()),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 2 * ASH_SAFE_RANGE - 1) }, vector<int>()),
+		make_tuple(vector{ Point(100, ASH_SAFE_RANGE) }, vector<int>()),
+		make_tuple(vector{ Point(2 * ASH_SAFE_RANGE - 100, ASH_SAFE_RANGE) }, vector<int>()),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 100) }, vector<int>()),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 2 * ASH_SAFE_RANGE - 100) }, vector<int>())
+	)
+);
+
+INSTANTIATE_TEST_CASE_P(
+	ZombieOutAshAtackRange_ShouldBeAlive,
+	GameReferee_DestoyZombie_Tests,
+	Values(
+		make_tuple(vector{ Point(0, ASH_SAFE_RANGE) }, vector{ 0 }),
+		make_tuple(vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) }, vector{ 0 }),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 0) }, vector{ 0 }),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 2 * ASH_SAFE_RANGE) }, vector{ 0 }),
+		make_tuple(vector{ Point(2 * ASH_SAFE_RANGE + 400, ASH_SAFE_RANGE) }, vector{ 0 }),
+		make_tuple(vector{ Point(ASH_SAFE_RANGE, 2 * ASH_SAFE_RANGE + 400) }, vector{ 0 }),
+		make_tuple(
+			vector{
+				Point(2 * ASH_SAFE_RANGE + 400, ASH_SAFE_RANGE),
+				Point(ASH_SAFE_RANGE, 2 * ASH_SAFE_RANGE + 400),
+				Point(1, ASH_SAFE_RANGE),
+				Point(0, 0)
+			},
+			vector{ 0, 1, 3 })
+	)
+);
+
+TEST_P(GameReferee_DestoyZombie_Tests, Case)
+{
+	auto [zombiesCoodinates, expectedAliveZombiesIds] = GetParam();
+	const auto gameState = CreateGameState(zombiesCoodinates);
+	auto referee = CreateReferee(gameState.get());
+
+	referee.Turn(gameState->GetAsh());
+
+	auto& zombies = gameState->GetZombies();
+	ASSERT_EQ(expectedAliveZombiesIds.size(), zombies.size());
+	for (const auto& it : expectedAliveZombiesIds)
+		ASSERT_TRUE(zombies.find(it) != zombies.end());
+}
