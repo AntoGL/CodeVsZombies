@@ -2,22 +2,9 @@
 #include <unordered_set>
 #include <algorithm>
 #include "GameReferee.h"
+#include "Fibonachi.h"
 #include "GameConst.h"
 #include "Vector.h"
-
-class Fibonachi
-{
-public:
-	static int at(const int number)
-	{
-		if (number == 1)
-			return 0;
-		if (number == 2)
-			return 1;
-
-		return at(number - 1) + at(number - 2);
-	}
-};
 
 void GameReferee::SetGameState(const GameStatePtr& gameState)
 {
