@@ -482,7 +482,7 @@ INSTANTIATE_TEST_CASE_P(
 );
 
 INSTANTIATE_TEST_CASE_P(
-	SeveralZombie_ScoreEqualFibNumberOfDestroyedZobiesSub2,	// Fib(NumberOfDestroyedZobies - 2) * 10
+	SeveralZombie_ScoreEqualFibNumberOfDestroyedZobiesSub2,	// Fib(NumberOfDestroyedZobies + 2) * 10
 	GameReferee_Score_Tests,
 	Values(
 		make_tuple(
