@@ -5,6 +5,20 @@
 #include "GameConst.h"
 #include "Vector.h"
 
+class Fibonachi
+{
+public:
+	static int at(const int number)
+	{
+		if (number == 1)
+			return 0;
+		if (number == 2)
+			return 1;
+
+		return at(number - 1) + at(number - 2);
+	}
+};
+
 void GameReferee::SetGameState(const GameStatePtr& gameState)
 {
 	game = gameState;
@@ -69,6 +83,20 @@ void GameReferee::DestroyZombies() const
 
 	for (const int id : destroyedZombieIds)
 		game->RemoveZombie(id);
+
+	AddScore(static_cast<int>(destroyedZombieIds.size()));
+}
+
+void GameReferee::AddScore(const int countZombiesDestoied) const
+{
+	auto score = game->GetScore();
+	const auto countHumans = static_cast<int>(game->GetHumans().size());
+	const auto humansScore = countHumans * countHumans;
+	const auto zombieScore = Fibonachi::at(countZombiesDestoied + 2);
+
+	score += zombieScore * humansScore * 10;
+
+	game->SetScore(score);
 }
 
 void GameReferee::DestroyHuman() const

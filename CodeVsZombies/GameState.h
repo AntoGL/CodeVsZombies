@@ -12,6 +12,7 @@ class GameState
     Humans humans;
     Zombies zombies;
     Unit Ash;
+    int score;
 
 public:
     CVZ_EXPORT GameState() = default;
@@ -39,6 +40,8 @@ public:
     void RemoveHuman(int id);
     CVZ_EXPORT void AddZombie(const Zombie& zombie);
     void RemoveZombie(int id);
+    CVZ_EXPORT int GetScore() const;
+    CVZ_EXPORT void SetScore(int value);
 };
 
 using GameStatePtr = GameState*;

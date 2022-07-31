@@ -47,6 +47,7 @@ void GameState::Clear()
 	Ash = Unit(0, 0);
 	humans.clear();
 	zombies.clear();
+	score = 0;
 }
 
 void GameState::SetAshCoordinate(const int x, const int y)
@@ -72,4 +73,14 @@ void GameState::AddZombie(const Zombie& zombie)
 void GameState::RemoveZombie(const int id)
 {
 	zombies.erase(id);
+}
+
+int GameState::GetScore() const
+{
+	return score;
+}
+
+void GameState::SetScore(const int value)
+{
+	score = value;
 }
