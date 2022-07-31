@@ -512,6 +512,25 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
+INSTANTIATE_TEST_CASE_P(
+	SeveralZombieAndSeveralHumans_ScoreEqualNumberOfHumansSquaredFibNumberOfDestroyedZobiesSub2x10,	// NumberOfHumans * NumberOfHumans * Fib(NumberOfDestroyedZobies + 2) * 10
+	GameReferee_Score_Tests,
+	Values(
+		make_tuple(
+			vector(5, Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE)),
+			vector(3, Point(0, 0)),
+			9 * 8 * 10),
+		make_tuple(
+			vector(10, Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE)),
+			vector(10, Point(0, 0)),
+			100 * 89 * 10),
+		make_tuple(
+			vector(6, Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE)),
+			vector(2, Point(0, 0)),
+			4 * 13 * 10)
+	)
+);
+
 TEST_P(GameReferee_Score_Tests, Case)
 {
 	auto [zombiesCoordinates, humansCoordinates, expectedScore] = GetParam();
