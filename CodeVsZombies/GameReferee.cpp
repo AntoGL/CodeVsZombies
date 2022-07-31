@@ -16,6 +16,7 @@ void GameReferee::Turn(const Point& action)
 	MoveAsh(action);
 	DestroyZombies();
 	DestroyHuman();
+	CheckEndGame();
 }
 
 void GameReferee::MoveZombies()
@@ -88,4 +89,10 @@ void GameReferee::DestroyHuman() const
 
 	for (const int id : destroyedHumanIds)
 		game->RemoveHuman(id);
+}
+
+void GameReferee::CheckEndGame() const
+{
+	const bool allHumanDead = game->GetHumans().empty();
+	game->SetEndGame(allHumanDead);
 }

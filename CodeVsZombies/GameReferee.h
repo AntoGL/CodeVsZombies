@@ -18,4 +18,5 @@ private:
 	void MoveAsh(const Point& action) const;
 	void DestroyZombies() const;
 	void DestroyHuman() const;
+	void CheckEndGame() const;
 };

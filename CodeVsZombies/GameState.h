@@ -8,6 +8,7 @@ using Zombies = std::unordered_map<int, Zombie>;
 
 class GameState
 {
+    bool isEndGame;
     Humans humans;
     Zombies zombies;
     Unit Ash;
@@ -22,6 +23,8 @@ public:
     CVZ_EXPORT GameState& operator=(const GameState&) = delete;
     CVZ_EXPORT GameState& operator=(GameState&&) = delete;
 
+    CVZ_EXPORT bool IsEndGame() const;
+    CVZ_EXPORT void SetEndGame(bool value);
     CVZ_EXPORT const Unit& GetAsh() const;
     const Unit& GetHuman(int id) const;
     CVZ_EXPORT const Humans& GetHumans() const;

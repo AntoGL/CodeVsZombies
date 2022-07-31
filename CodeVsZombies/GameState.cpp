@@ -1,6 +1,16 @@
 #include "pch.h"
 #include "GameState.h"
 
+bool GameState::IsEndGame() const
+{
+	return isEndGame;
+}
+
+void GameState::SetEndGame(const bool value)
+{
+	isEndGame = value;
+}
+
 const Unit& GameState::GetAsh() const
 {
 	return Ash;
@@ -33,6 +43,7 @@ Zombies& GameState::GetZombies()
 
 void GameState::Clear()
 {
+	isEndGame = false;
 	Ash = Unit(0, 0);
 	humans.clear();
 	zombies.clear();
