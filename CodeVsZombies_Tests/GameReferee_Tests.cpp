@@ -541,3 +541,36 @@ TEST_P(GameReferee_Score_Tests, Case)
 
 	ASSERT_EQ(expectedScore, gameState->GetScore());
 }
+
+TEST_F(GameReferee_Score_Tests, DestroyingZombieWhileAnotherZombieDestroyingHuman_ScoreIncreaseBeforeDestroyHuman)
+{
+	const auto gameState = CreateGameState(
+		vector{
+			Point(ASH_SAFE_RANGE,ASH_SAFE_RANGE),
+			Point(2 * ASH_SAFE_RANGE,ASH_SAFE_RANGE) },
+		vector{
+			Point(ASH_SAFE_RANGE,ASH_SAFE_RANGE),
+			Point(2 * ASH_SAFE_RANGE,ASH_SAFE_RANGE)
+		});
+	auto referee = CreateReferee(gameState.get());
+
+	referee.Turn(gameState->GetAsh());
+
+	ASSERT_EQ(40, gameState->GetScore());
+}
+
+TEST_F(GameReferee_Score_Tests, DestroyTwoZombieInTwoRounds_ScoreForDestroyAddOldScore)
+{
+	const auto gameState = CreateGameState(
+		vector{
+			Point(2 * ASH_SAFE_RANGE,ASH_SAFE_RANGE),
+			Point(2 * ASH_SAFE_RANGE + ZOMBIE_SPEED,ASH_SAFE_RANGE) },
+			vector{ Point(ASH_SAFE_RANGE,ASH_SAFE_RANGE) }
+	);
+	auto referee = CreateReferee(gameState.get());
+
+	referee.Turn(gameState->GetAsh());
+	referee.Turn(gameState->GetAsh());
+
+	ASSERT_EQ(20, gameState->GetScore());
+}
