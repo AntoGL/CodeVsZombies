@@ -542,6 +542,7 @@ TEST_P(GameReferee_Score_Tests, Case)
 	ASSERT_EQ(expectedScore, gameState->GetScore());
 }
 
+//TODO: Найти более выразительные имена для тестов или более понятный код
 TEST_F(GameReferee_Score_Tests, DestroyingZombieWhileAnotherZombieDestroyingHuman_ScoreIncreaseBeforeDestroyHuman)
 {
 	const auto gameState = CreateGameState(
