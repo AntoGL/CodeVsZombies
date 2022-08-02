@@ -1,6 +1,25 @@
 #include "pch.h"
 #include "GameState.h"
 
+GameState::GameState()
+	: isEndGame(false)
+	, score(0)
+{
+
+}
+
+GameState::GameState(const GameState& source)
+	: isEndGame(source.isEndGame)
+	, Ash(source.Ash)
+	, score(source.score)
+{
+	for (const auto& [_, human] : source.humans)
+		AddHuman(human);
+
+	for (const auto& [_, zombie] : source.zombies)
+		AddZombie(zombie);
+}
+
 bool GameState::IsEndGame() const
 {
 	return isEndGame;

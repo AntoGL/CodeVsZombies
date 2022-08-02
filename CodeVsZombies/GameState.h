@@ -15,10 +15,10 @@ class GameState
     int score;
 
 public:
-    CVZ_EXPORT GameState() = default;
+    CVZ_EXPORT GameState();
     ~GameState() = default;
 
-    CVZ_EXPORT GameState(const GameState&) = delete;
+    CVZ_EXPORT GameState(const GameState& source);
     CVZ_EXPORT GameState(GameState&&) = delete;
 
     CVZ_EXPORT GameState& operator=(const GameState&) = delete;
