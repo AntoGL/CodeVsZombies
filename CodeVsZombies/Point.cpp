@@ -1,9 +1,6 @@
 #include "pch.h"
+#include <cmath>
 #include "Point.h"
-
-constexpr Point::Point(const int x, const int y) : x(x), y(y)
-{
-}
 
 double Point::DistanceTo(const Point& point) const
 {

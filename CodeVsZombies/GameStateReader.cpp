@@ -28,7 +28,7 @@ void GameStateReader::ReadHumans(GameState& gameState, std::istream& input)
 		input >> id >> x >> y;
 		input.ignore();
 
-		gameState.AddHuman(Unit(x, y));
+		gameState.AddHuman(Unit(id, x, y));
 	}
 }
 

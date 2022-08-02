@@ -1,18 +1,16 @@
 #pragma once
-#include <cmath>
+#include "export.h"
 
 struct Point
 {
     int x;
     int y;
 
-    constexpr Point(int x, int y);
-    double DistanceTo(const Point& point) const;
-};
+    CVZ_EXPORT constexpr Point(const int x, const int y)
+	    : x(x), y(y)
+    {
+	    
+    }
 
-inline double distanceD(const Point& a, const Point& b)
-{
-    const int dx = a.x - b.x;
-    const int dy = a.y - b.y;
-    return std::sqrt(dx * dx + dy * dy);
-}
+    CVZ_EXPORT double DistanceTo(const Point& point) const;
+};
