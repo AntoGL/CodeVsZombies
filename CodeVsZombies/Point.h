@@ -1,14 +1,16 @@
 #pragma once
+#include "export.h"
+
 struct Point
 {
     int x;
     int y;
 
-    constexpr Point(const int x, const int y)
+    CVZ_EXPORT constexpr Point(const int x, const int y)
 	    : x(x), y(y)
     {
 	    
     }
 
-    double DistanceTo(const Point& point) const;
+    CVZ_EXPORT double DistanceTo(const Point& point) const;
 };

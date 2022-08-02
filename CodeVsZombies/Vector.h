@@ -5,15 +5,16 @@ struct Vector
 {
 	double x;
 	double y;
-	double length;
 
 public:
-	Vector(const Point& start, const Point& end);
+	CVZ_EXPORT Vector(double x, double y);
+	CVZ_EXPORT Vector(const Point& start, const Point& end);
 
-	void SetLength(double value);
+	CVZ_EXPORT inline double GetLength() const;
+	CVZ_EXPORT void SetLength(double value);
 };
 
-Point operator+(const Point& point, const Vector& vector);
-Point operator+(const Vector& vector, const Point& point);
+CVZ_EXPORT Point operator+(const Point& point, const Vector& vector);
+CVZ_EXPORT Point operator+(const Vector& vector, const Point& point);
 
-Vector operator-(const Point& end, const Point& start);
+CVZ_EXPORT Vector operator-(const Point& end, const Point& start);

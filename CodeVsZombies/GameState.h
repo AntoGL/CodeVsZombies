@@ -8,34 +8,40 @@ using Zombies = std::unordered_map<int, Zombie>;
 
 class GameState
 {
+    bool isEndGame;
     Humans humans;
     Zombies zombies;
     Unit Ash;
+    int score;
 
 public:
-    GameState() = default;
+    CVZ_EXPORT GameState();
     ~GameState() = default;
 
-    GameState(const GameState&) = delete;
-    GameState(GameState&&) = delete;
+    CVZ_EXPORT GameState(const GameState& source);
+    CVZ_EXPORT GameState(GameState&&) = delete;
 
-    GameState& operator=(const GameState&) = delete;
-    GameState& operator=(GameState&&) = delete;
+    CVZ_EXPORT GameState& operator=(const GameState&) = delete;
+    CVZ_EXPORT GameState& operator=(GameState&&) = delete;
 
-    const Unit& GetAsh() const;
+    CVZ_EXPORT bool IsEndGame() const;
+    CVZ_EXPORT void SetEndGame(bool value);
+    CVZ_EXPORT const Unit& GetAsh() const;
     const Unit& GetHuman(int id) const;
-    const Humans& GetHumans() const;
+    CVZ_EXPORT const Humans& GetHumans() const;
     const Zombie& GetZombie(int id) const;
     const Zombies& GetZombies() const;
-    Zombies& GetZombies();
+    CVZ_EXPORT Zombies& GetZombies();
 
     void Clear();
 
-    void SetAshCoordinate(int x, int y);
-    void AddHuman(const Unit& human);
+    CVZ_EXPORT void SetAshCoordinate(int x, int y);
+    CVZ_EXPORT void AddHuman(const Unit& human);
     void RemoveHuman(int id);
-    void AddZombie(const Zombie& zombie);
+    CVZ_EXPORT void AddZombie(const Zombie& zombie);
     void RemoveZombie(int id);
+    CVZ_EXPORT int GetScore() const;
+    CVZ_EXPORT void SetScore(int value);
 };
 
 using GameStatePtr = GameState*;

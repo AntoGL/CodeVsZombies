@@ -2,10 +2,11 @@
 #include <unordered_set>
 #include <algorithm>
 #include "GameReferee.h"
+#include "Fibonachi.h"
 #include "GameConst.h"
 #include "Vector.h"
 
-void GameReferee::SetGameState(const GameStatePtr& gameState)
+void GameReferee::SetGameState(GameState* gameState)
 {
 	game = gameState;
 }
@@ -16,6 +17,7 @@ void GameReferee::Turn(const Point& action)
 	MoveAsh(action);
 	DestroyZombies();
 	DestroyHuman();
+	CheckEndGame();
 }
 
 void GameReferee::MoveZombies()
@@ -30,7 +32,7 @@ void GameReferee::MoveZombie(Zombie& zombie)
 	double minD = zombie.DistanceTo(targetPoint);
 	for (auto& human : game->GetHumans())
 	{
-		const double d = zombie.DistanceTo(human.second) < minD;
+		const double d = zombie.DistanceTo(human.second);
 		if (d < minD)
 		{
 			minD = d;
@@ -47,7 +49,13 @@ void GameReferee::MoveZombie(Zombie& zombie)
 
 void GameReferee::MoveAsh(const Point& action) const
 {
-	game->SetAshCoordinate(action.x, action.y);
+	const Point ashCoord = game->GetAsh();
+	Vector move = action - ashCoord;
+	if (move.GetLength() > ASH_SPEED)
+		move.SetLength(ASH_SPEED);
+
+	const Point nextState = ashCoord + move;
+	game->SetAshCoordinate(nextState.x, nextState.y);
 }
 
 void GameReferee::DestroyZombies() const
@@ -56,12 +64,26 @@ void GameReferee::DestroyZombies() const
 	std::unordered_set<int> destroyedZombieIds;
 	for (auto& zombie : game->GetZombies())
 	{
-		if (ashCoordinate.DistanceTo(zombie.second) < ASH_ATTACK_RANGE)
+		if (ashCoordinate.DistanceTo(zombie.second) <= ASH_ATTACK_RANGE)
 			destroyedZombieIds.emplace(zombie.first);
 	}
 
 	for (const int id : destroyedZombieIds)
 		game->RemoveZombie(id);
+
+	AddScore(static_cast<int>(destroyedZombieIds.size()));
+}
+
+void GameReferee::AddScore(const int countZombiesDestoied) const
+{
+	auto score = game->GetScore();
+	const auto countHumans = static_cast<int>(game->GetHumans().size());
+	const auto humansScore = countHumans * countHumans;
+	const auto zombieScore = Fibonachi::at(countZombiesDestoied + 2);
+
+	score += zombieScore * humansScore * 10;
+
+	game->SetScore(score);
 }
 
 void GameReferee::DestroyHuman() const
@@ -82,4 +104,10 @@ void GameReferee::DestroyHuman() const
 
 	for (const int id : destroyedHumanIds)
 		game->RemoveHuman(id);
+}
+
+void GameReferee::CheckEndGame() const
+{
+	const bool allHumanDead = game->GetHumans().empty();
+	game->SetEndGame(allHumanDead);
 }

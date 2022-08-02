@@ -1,17 +1,30 @@
 #include "pch.h"
+#include <cmath>
 #include "Vector.h"
 
-Vector::Vector(const Point& start, const Point& end)
+Vector::Vector(const double x,  const double y)
+	: x(x), y(y)
 {
-	x = end.x - start.x;
-	y = end.y - start.y;
-	length = start.DistanceTo(end);
+}
+
+Vector::Vector(const Point& start, const Point& end)
+	: x(end.x - start.x)
+	, y(end.y - start.y)
+{
+}
+
+double Vector::GetLength() const
+{
+	return std::sqrt(x*x+y*y);
 }
 
 void Vector::SetLength(const double value)
 {
+	const double length = GetLength();
+	if (length == 0)
+		return;
+
 	const double p = value / length;
-	length = value;
 	x *= p;
 	y *= p;
 }

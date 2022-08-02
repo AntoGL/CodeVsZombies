@@ -25,6 +25,9 @@
     <Filter Include="CvZ\Game\Units">
       <UniqueIdentifier>{1dd91a03-3fc6-437b-8676-79de43db1bc2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CvZ\Utils">
+      <UniqueIdentifier>{08bef2e5-fed5-4aad-84c0-e8a693282001}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -60,6 +63,12 @@
     <ClInclude Include="Vector.h">
       <Filter>CvZ\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="export.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Fibonachi.h">
+      <Filter>CvZ\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -94,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>CvZ\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Fibonachi.cpp">
+      <Filter>CvZ\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
