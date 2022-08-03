@@ -109,5 +109,8 @@ void GameReferee::DestroyHuman() const
 void GameReferee::CheckEndGame() const
 {
 	const bool allHumanDead = game->GetHumans().empty();
-	game->SetEndGame(allHumanDead);
+	const bool allZombieDead = game->GetZombies().empty();
+	game->SetEndGame(allHumanDead || allZombieDead);
+	if (allHumanDead)
+		game->SetScore(0);
 }
