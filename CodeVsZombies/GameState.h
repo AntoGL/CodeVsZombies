@@ -6,6 +6,7 @@
 using Humans = std::unordered_map<int, Unit>;
 using Zombies = std::unordered_map<int, Zombie>;
 
+//TODO: Посмотреть происходят ли тормоза при частом копировании колекции зомби (тормоза на выделение памяти под колекцию)
 class GameState
 {
     bool isEndGame;

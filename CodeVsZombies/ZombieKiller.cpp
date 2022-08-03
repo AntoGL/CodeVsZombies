@@ -5,6 +5,7 @@
 
 std::vector<Point> ZombieKiller::GetMoves(const GameState& gameState)
 {
+	//TODO: Провести разбиение на сектора в 90 градусов, чтоб не расчитывать сдвиги в +- одинаковую сторону
 	std::vector<Point> moves;
 	const auto& humans = gameState.GetHumans();
 	for (const auto& [_, human] : humans)

@@ -8,6 +8,7 @@ GameState::GameState()
 
 }
 
+//TODO: Хранить людей отдельно в памяти, чтоб при копировании не пересоздавать их
 GameState::GameState(const GameState& source)
 	: isEndGame(source.isEndGame)
 	, Ash(source.Ash)
