@@ -32,9 +32,6 @@ std::vector<Point> ZombieKiller::GetMoves(const GameState& gameState)
 		if (ashToHuman.y < 0)
 			angle += angle180;
 
-		if (isnan(angle))
-			continue;
-
 		const int sectorIndex = static_cast<int>(angle / angle90);
 		moves[sectorIndex] = human;
 	}
