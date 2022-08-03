@@ -29,6 +29,11 @@ void Vector::SetLength(const double value)
 	y *= p;
 }
 
+double Vector::Angle(const Vector& vector) const
+{
+	return acos((x * vector.x + y * vector.y) / sqrt(GetLength() * vector.GetLength()));
+}
+
 Point operator+(const Point& point, const Vector& vector)
 {
 	const int x = static_cast<int>(point.x + vector.x);
