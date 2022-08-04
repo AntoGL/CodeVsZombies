@@ -424,6 +424,50 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
+INSTANTIATE_TEST_CASE_P(
+	AllZombieDestroyed_EndGame,
+	GameReferee_EndGame_Tests,
+	Values(
+		make_tuple(
+			vector{ Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
+			vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
+			true),
+		make_tuple(
+			vector{
+				Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE),
+				Point(ASH_SAFE_RANGE, MOVE_RANGE)
+			},
+			vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
+			true)
+	)
+);
+
+INSTANTIATE_TEST_CASE_P(
+	AnyZombieAlive_GameContinuing,
+	GameReferee_EndGame_Tests,
+	Values(
+		make_tuple(
+			vector{ Point(0, 0) },
+			vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
+			false),
+		make_tuple(
+			vector{
+				Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE),
+				Point(ASH_SAFE_RANGE, 0)
+			},
+			vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
+			false),
+		make_tuple(
+			vector{
+				Point(ASH_SAFE_RANGE - MOVE_RANGE, ASH_SAFE_RANGE),
+				Point(ASH_SAFE_RANGE, 2 * ASH_SAFE_RANGE),
+				Point(ASH_SAFE_RANGE, MOVE_RANGE)
+			},
+			vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
+			false)
+	)
+);
+
 TEST_P(GameReferee_EndGame_Tests, Case)
 {
 	auto [zombiesCoordinates, humansCoordinates, expectedEndGame] = GetParam();
@@ -574,4 +618,22 @@ TEST_F(GameReferee_Score_Tests, DestroyTwoZombieInTwoRounds_ScoreForDestroyAddOl
 	referee.Turn(gameState->GetAsh());
 
 	ASSERT_EQ(20, gameState->GetScore());
+}
+
+TEST_F(GameReferee_Score_Tests, AllHumanDestroyed_ScoreEqualZero)
+{
+	const auto gameState = CreateGameState(
+		vector{
+			Point(ASH_SAFE_RANGE, ASH_SAFE_RANGE),
+			Point(ZOMBIE_SAFE_RANGE, 0)
+		},
+		vector{
+			Point(0,0)
+		});
+	auto referee = CreateReferee(gameState.get());
+
+	referee.Turn(gameState->GetAsh());
+	referee.Turn(gameState->GetAsh());
+
+	ASSERT_EQ(0, gameState->GetScore());
 }

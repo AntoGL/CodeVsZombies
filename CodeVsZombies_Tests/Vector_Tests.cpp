@@ -171,14 +171,6 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
-	GameTests,
-	Vector_Angle_Tests,
-	Values(
-		make_tuple(Vector(1, 0), Vector(Point(4385, 2391), Point(8250, 4500)), std::acos(1))
-	)
-);
-
 TEST_P(Vector_Angle_Tests, Case)
 {
 	auto [vector1, vector2, expectedAngle] = GetParam();
