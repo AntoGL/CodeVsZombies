@@ -14,6 +14,8 @@ public:
 private:
 	void MoveZombies();
 	void MoveZombie(Zombie& zombie);
+	void UpdateZombieTarget(Zombie& zombie) const;
+	const Unit& GetZombieTarget(const Zombie& zombie) const;
 
 	void MoveAsh(const Point& action) const;
 	void DestroyZombies() const;

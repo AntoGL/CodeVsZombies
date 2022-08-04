@@ -28,23 +28,36 @@ void GameReferee::MoveZombies()
 
 void GameReferee::MoveZombie(Zombie& zombie)
 {
-	Point targetPoint = game->GetAsh();
-	double minD = zombie.DistanceTo(targetPoint);
-	for (auto& human : game->GetHumans())
-	{
-		const double d = zombie.DistanceTo(human.second);
-		if (d < minD)
-		{
-			minD = d;
-			targetPoint = human.second;
-		}
-	}
+	UpdateZombieTarget(zombie);
+	const Unit& targetUnit = GetZombieTarget(zombie);
 
-	Vector v = targetPoint - zombie;
+	Vector v = targetUnit - zombie;
 	v.SetLength(ZOMBIE_SPEED);
 
 	zombie.SetCoordinate(zombie + v);
 	zombie.SetNextCoordinate(zombie + v);
+}
+
+void GameReferee::UpdateZombieTarget(Zombie& zombie) const
+{
+	int id = ASH_ID;
+	double minD = zombie.DistanceTo(game->GetAsh());
+	for (const auto& [_, human] : game->GetHumans())
+	{
+		if (const double d = zombie.DistanceTo(human); d < minD)
+		{
+			minD = d;
+			id = human.GetId();
+		}
+	}
+
+	zombie.SetTargetId(id);
+}
+
+const Unit& GameReferee::GetZombieTarget(const Zombie& zombie) const
+{
+	const int targetId = zombie.GetTargetId();
+	return targetId == ASH_ID ? game->GetAsh() : game->GetHuman(targetId);
 }
 
 void GameReferee::MoveAsh(const Point& action) const
