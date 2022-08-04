@@ -12,6 +12,8 @@ public:
 
 	CVZ_EXPORT inline double GetLength() const;
 	CVZ_EXPORT void SetLength(double value);
+
+	CVZ_EXPORT double Angle(const Vector& vector) const;
 };
 
 CVZ_EXPORT Point operator+(const Point& point, const Vector& vector);

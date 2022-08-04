@@ -150,3 +150,33 @@ TEST_P(Vector_SetLength_Fixture, Case)
 	ASSERT_EQ(expectedVector.x, vector.x);
 	ASSERT_EQ(expectedVector.y, vector.y);
 }
+
+struct Vector_Angle_Tests : TestWithParam<tuple<Vector, Vector, double>>
+{
+	
+};
+
+#define Angle45 std::sqrt(2) / 2
+
+INSTANTIATE_TEST_CASE_P(
+	SimpleTests,
+	Vector_Angle_Tests,
+	Values(
+		make_tuple(Vector(1, 0), Vector(1, 0), std::acos(1)),	// 0
+		make_tuple(Vector(1, 0), Vector(Angle45, Angle45), std::acos(std::sqrt(2) / 2)),	// 45
+		make_tuple(Vector(1, 0), Vector(0, 1), std::acos(0)),	// 90
+		make_tuple(Vector(1, 0), Vector(-1, 0), std::acos(-1)),	// 180
+		make_tuple(Vector(1, 0), Vector(0, -1), std::acos(0)),	// -90
+		make_tuple(Vector(1, 0), Vector(Angle45, -Angle45), std::acos(std::sqrt(2) / 2))	//-45
+	)
+);
+
+TEST_P(Vector_Angle_Tests, Case)
+{
+	auto [vector1, vector2, expectedAngle] = GetParam();
+	vector2.SetLength(1);
+
+	const double angle = vector1.Angle(vector2);
+
+	ASSERT_EQ(expectedAngle, angle);
+}

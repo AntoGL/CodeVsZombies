@@ -1,15 +1,44 @@
 #include "pch.h"
-#include <queue>
+#include <iostream>
 #include "ZombieKiller.h"
 #include "GameReferee.h"
+#include "Vector.h"
 
 std::vector<Point> ZombieKiller::GetMoves(const GameState& gameState)
 {
-	//TODO: Провести разбиение на сектора в 90 градусов, чтоб не расчитывать сдвиги в +- одинаковую сторону
-	std::vector<Point> moves;
+	//TODO: Сделать код читабельнее
+	static const Vector base(1, 0);
+	constexpr double angle180 = 3.14159265; // std::acos(-1);
+	constexpr double angle90 = 1.57079633; // std::acos(0);
+
+	if (gameState.IsEndGame())
+		return { gameState.GetAsh() };
+
+	std::vector moves(4, Point(0, 0));
+
+	const auto& ash = gameState.GetAsh();
 	const auto& humans = gameState.GetHumans();
 	for (const auto& [_, human] : humans)
-		moves.push_back(human);
+	{
+		Vector ashToHuman(ash, human);
+		if (ashToHuman.x == 0 && ashToHuman.y == 0)
+		{
+			moves[0] = human;
+			continue;
+		}
+
+		ashToHuman.SetLength(1);
+		double angle = base.Angle(ashToHuman);
+		if (ashToHuman.y < 0)
+			angle += angle180;
+
+		const int sectorIndex = static_cast<int>(angle / angle90);
+		moves[sectorIndex] = human;
+	}
+
+	for (int i = moves.size() -1; i >= 0; i--)
+		if (moves[i].x == 0 && moves[i].y == 0)
+			moves.erase(moves.begin() + i);
 
 	return moves;
 }
@@ -68,7 +97,7 @@ std::vector<Turn> ZombieKiller::Calculate(const Turn& turn)
 Point ZombieKiller::GetMovePoint(const GameState& gameState)
 {
 	auto turns = Calculate(gameState);
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		turns = Calculate(turns);
 	}

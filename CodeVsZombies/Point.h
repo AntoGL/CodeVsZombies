@@ -12,5 +12,9 @@ struct Point
 	    
     }
 
+    CVZ_EXPORT constexpr Point(const Point& source) = default;
+
     CVZ_EXPORT double DistanceTo(const Point& point) const;
+
+    CVZ_EXPORT Point& operator=(const Point& source) = default;
 };
