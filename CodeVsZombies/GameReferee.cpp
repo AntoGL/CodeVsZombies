@@ -41,14 +41,24 @@ void GameReferee::MoveZombie(Zombie& zombie)
 
 void GameReferee::UpdateZombieTarget(Zombie& zombie) const
 {
-	int id = ASH_ID;
-	double minD = zombie.DistanceTo(game->GetAsh());
-	for (const auto& [_, human] : game->GetHumans())
+	int id = zombie.GetTargetId();
+	if (id != ASH_ID)
 	{
-		if (const double d = zombie.DistanceTo(human); d < minD)
+		const Point& targetHumanCoordinate = GetZombieTarget(zombie);
+		const Point& ashCoordinate = game->GetAsh();
+		if (ashCoordinate.DistanceTo(zombie) < targetHumanCoordinate.DistanceTo(zombie))
+			id = ASH_ID;
+	}
+	else
+	{
+		double minD = zombie.DistanceTo(game->GetAsh());
+		for (const auto& [_, human] : game->GetHumans())
 		{
-			minD = d;
-			id = human.GetId();
+			if (const double d = zombie.DistanceTo(human); d < minD)
+			{
+				minD = d;
+				id = human.GetId();
+			}
 		}
 	}
 
