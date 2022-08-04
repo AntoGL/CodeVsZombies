@@ -22,8 +22,8 @@ void GameReferee::Turn(const Point& action)
 
 void GameReferee::MoveZombies()
 {
-	for (auto& zomby : game->GetZombies())
-		MoveZombie(zomby.second);
+	for (auto& [_, zombie] : game->GetZombies())
+		MoveZombie(zombie);
 }
 
 void GameReferee::MoveZombie(Zombie& zombie)
@@ -32,7 +32,8 @@ void GameReferee::MoveZombie(Zombie& zombie)
 	const Unit& targetUnit = GetZombieTarget(zombie);
 
 	Vector v = targetUnit - zombie;
-	v.SetLength(ZOMBIE_SPEED);
+	if (v.GetLength() > ZOMBIE_SPEED)
+		v.SetLength(ZOMBIE_SPEED);
 
 	zombie.SetCoordinate(zombie + v);
 	zombie.SetNextCoordinate(zombie + v);

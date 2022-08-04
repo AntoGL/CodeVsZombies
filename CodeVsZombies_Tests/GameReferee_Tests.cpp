@@ -6,6 +6,7 @@ using namespace std;
 using namespace testing;
 
 constexpr int MOVE_RANGE = static_cast<int>(ASH_SPEED);
+constexpr int ZOMBIE_MOVE_RANGE = static_cast<int>(ZOMBIE_SPEED);
 constexpr int ASH_SAFE_RANGE = static_cast<int>(ASH_ATTACK_RANGE + ZOMBIE_SPEED + 1);
 constexpr int ZOMBIE_SAFE_RANGE = static_cast<int>(ZOMBIE_ATTACK_RANGE + ZOMBIE_SPEED + 1);
 constexpr int ZOMBIE_NOT_SAFE_RANGE = static_cast<int>(ZOMBIE_ATTACK_RANGE + ZOMBIE_SPEED - 1);
@@ -184,6 +185,21 @@ INSTANTIATE_TEST_CASE_P(
 			vector{ Point(2 * ASH_SAFE_RANGE, ASH_SAFE_RANGE) },
 			vector{ Point(3 * ASH_SAFE_RANGE + 1, ASH_SAFE_RANGE) },
 			vector{ Point(static_cast<int>(2 * ASH_SAFE_RANGE - ZOMBIE_SPEED), ASH_SAFE_RANGE) })
+	)
+);
+
+INSTANTIATE_TEST_CASE_P(
+	DistanceToHumanLessMoveRange_MoveToHumanCoordinate,
+	GameReferee_MoveZombie_Tests,
+	Values(
+		make_tuple(
+			vector{ Point(0, 0) },
+			vector{ Point(ZOMBIE_MOVE_RANGE, 0) },
+			vector{ Point(ZOMBIE_MOVE_RANGE, 0) }),
+		make_tuple(
+			vector{ Point(100, 0) },
+			vector{ Point(ZOMBIE_MOVE_RANGE, 0) },
+			vector{ Point(ZOMBIE_MOVE_RANGE, 0) })
 	)
 );
 
