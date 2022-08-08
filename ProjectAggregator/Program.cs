@@ -11,6 +11,8 @@ namespace ProjectAggregator
         {
             var aggregator = new ProjectAggregator();
             aggregator.AddDirectory(@"D:\Projects\CodeVsZombies\CodeVsZombies");
+            aggregator.AddString("#define CG");
+            aggregator.AddString("//#define CG_DEBUG");
 
             var res = aggregator.Aggregate(@"main.cpp");
 

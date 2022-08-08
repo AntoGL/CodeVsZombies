@@ -24,8 +24,6 @@ namespace ProjectAggregator
 
         public string Aggregate(string mainFile)
         {
-            ClearState();
-
             AddAggregateFile(mainFile);
 
             while (_fileStack.Any())
@@ -36,15 +34,6 @@ namespace ProjectAggregator
 
 
             return GetResult();
-        }
-
-        private void ClearState()
-        {
-            _stringBuilder.Clear();
-
-            _skipString.Clear();
-            _skipString.Add(new Regex("#include \"pch\\.h\""));
-            _skipString.Add(new Regex("#pragma once"));
         }
 
         private void AddAggregateFile(string fileName)
@@ -164,6 +153,11 @@ namespace ProjectAggregator
                 throw new Exception($"Directory not exist: {directoryPath}");
 
             _useDirectories.Add(new DirectoryInfo(directoryPath));
+        }
+
+        public void AddString(string str)
+        {
+            _stringBuilder.AppendLine(str);
         }
     }
 }
