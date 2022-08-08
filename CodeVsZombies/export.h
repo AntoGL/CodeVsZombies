@@ -1,7 +1,11 @@
 #pragma once
 
-#ifdef CODEVSZOMBIES_EXPORTS
-	#define CVZ_EXPORT __declspec(dllexport)
+#ifdef CG
+	#define CVZ_EXPORT
 #else
-	#define CVZ_EXPORT __declspec(dllimport)
+	#ifdef CODEVSZOMBIES_EXPORTS
+		#define CVZ_EXPORT __declspec(dllexport)
+	#else
+		#define CVZ_EXPORT __declspec(dllimport)
+	#endif
 #endif
