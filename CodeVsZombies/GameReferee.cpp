@@ -42,6 +42,9 @@ void GameReferee::MoveZombie(Zombie& zombie)
 void GameReferee::UpdateZombieTarget(Zombie& zombie) const
 {
 	int id = zombie.GetTargetId();
+	if (!game->IsAliveHuman(id))
+		id = -1;
+
 	if (id != ASH_ID)
 	{
 		const Point& targetHumanCoordinate = GetZombieTarget(zombie);

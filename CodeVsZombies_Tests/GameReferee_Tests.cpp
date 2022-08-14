@@ -11,7 +11,7 @@ constexpr int ASH_SAFE_RANGE = static_cast<int>(ASH_ATTACK_RANGE + ZOMBIE_SPEED 
 constexpr int ZOMBIE_SAFE_RANGE = static_cast<int>(ZOMBIE_ATTACK_RANGE + ZOMBIE_SPEED + 1);
 constexpr int ZOMBIE_NOT_SAFE_RANGE = static_cast<int>(ZOMBIE_ATTACK_RANGE + ZOMBIE_SPEED - 1);
 
-class GameReferee_Tests
+class GameReferee_Base_Tests
 {
 protected:
 	static void FillAshCoordinate(const unique_ptr<GameState>& gameState, const Point& ashCoordinate)
@@ -59,16 +59,16 @@ protected:
 	}
 };
 
-struct GameReferee_MoveAsh_Tests : GameReferee_Tests, TestWithParam<tuple<Point, Point, Point>>
+struct GameReferee_MoveAsh_Tests : GameReferee_Base_Tests, TestWithParam<tuple<Point, Point, Point>>
 {
 	static unique_ptr<GameState> CreateGameState(const Point& ashCoordinate)
 	{
-		return GameReferee_Tests::CreateGameState(ashCoordinate, vector<Point>(), vector<Point>());
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, vector<Point>(), vector<Point>());
 	}
 
 	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
-		return GameReferee_Tests::CreateReferee(gameState);
+		return GameReferee_Base_Tests::CreateReferee(gameState);
 	}
 };
 
@@ -119,18 +119,18 @@ TEST_P(GameReferee_MoveAsh_Tests, Case)
 	ASSERT_EQ(expectedAshCoordinate.y, ash.y);
 }
 
-class GameReferee_MoveZombie_Tests : public GameReferee_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, vector<Point>>>
+class GameReferee_MoveZombie_Tests : public GameReferee_Base_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, vector<Point>>>
 {
 public:
 	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate, const vector<Point>& humansCoordinate)
 	{
 		constexpr Point ashCoordinate(ASH_SAFE_RANGE, ASH_SAFE_RANGE);
-		return GameReferee_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
 	}
 
 	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
-		return GameReferee_Tests::CreateReferee(gameState);
+		return GameReferee_Base_Tests::CreateReferee(gameState);
 	}
 };
 
@@ -225,18 +225,18 @@ TEST_P(GameReferee_MoveZombie_Tests, Case)
 	}
 }
 
-class GameReferee_DestoyZombie_Tests : public GameReferee_Tests, public TestWithParam<tuple<vector<Point>, vector<int>>>
+class GameReferee_DestoyZombie_Tests : public GameReferee_Base_Tests, public TestWithParam<tuple<vector<Point>, vector<int>>>
 {
 public:
 	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate)
 	{
 		constexpr Point ashCoordinate(ASH_SAFE_RANGE, ASH_SAFE_RANGE);
-		return GameReferee_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, vector<Point>());
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, vector<Point>());
 	}
 
 	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
-		return GameReferee_Tests::CreateReferee(gameState);
+		return GameReferee_Base_Tests::CreateReferee(gameState);
 	}
 };
 
@@ -290,18 +290,18 @@ TEST_P(GameReferee_DestoyZombie_Tests, Case)
 		ASSERT_TRUE(zombies.find(it) != zombies.end());
 }
 
-class GameReferee_DestroyHuman_Tests : public GameReferee_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, vector<int>>>
+class GameReferee_DestroyHuman_Tests : public GameReferee_Base_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, vector<int>>>
 {
 public:
 	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate, const vector<Point>& humansCoordinate)
 	{
 		constexpr Point ashCoordinate(ASH_SAFE_RANGE, ASH_SAFE_RANGE);
-		return GameReferee_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
 	}
 
 	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
-		return GameReferee_Tests::CreateReferee(gameState);
+		return GameReferee_Base_Tests::CreateReferee(gameState);
 	}
 };
 
@@ -369,18 +369,18 @@ TEST_P(GameReferee_DestroyHuman_Tests, Case)
 		ASSERT_TRUE(humans.find(it) != humans.end());
 }
 
-class GameReferee_EndGame_Tests : public GameReferee_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, bool>>
+class GameReferee_EndGame_Tests : public GameReferee_Base_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, bool>>
 {
 public:
 	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate, const vector<Point>& humansCoordinate)
 	{
 		constexpr Point ashCoordinate(ASH_SAFE_RANGE, ASH_SAFE_RANGE);
-		return GameReferee_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
 	}
 
 	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
-		return GameReferee_Tests::CreateReferee(gameState);
+		return GameReferee_Base_Tests::CreateReferee(gameState);
 	}
 };
 
@@ -495,18 +495,18 @@ TEST_P(GameReferee_EndGame_Tests, Case)
 	ASSERT_EQ(expectedEndGame, gameState->IsEndGame());
 }
 
-class GameReferee_Score_Tests : public GameReferee_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, int>>
+class GameReferee_Score_Tests : public GameReferee_Base_Tests, public TestWithParam<tuple<vector<Point>, vector<Point>, int>>
 {
 public:
 	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate, const vector<Point>& humansCoordinate)
 	{
 		constexpr Point ashCoordinate(ASH_SAFE_RANGE, ASH_SAFE_RANGE);
-		return GameReferee_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
 	}
 
 	static GameReferee CreateReferee(const GameStatePtr& gameState)
 	{
-		return GameReferee_Tests::CreateReferee(gameState);
+		return GameReferee_Base_Tests::CreateReferee(gameState);
 	}
 };
 
@@ -652,4 +652,30 @@ TEST_F(GameReferee_Score_Tests, AllHumanDestroyed_ScoreEqualZero)
 	referee.Turn(gameState->GetAsh());
 
 	ASSERT_EQ(0, gameState->GetScore());
+}
+
+class GameReferee_Tests : public Test, public GameReferee_Base_Tests
+{
+public:
+	static unique_ptr<GameState> CreateGameState(const vector<Point>& zombiesCoordinate, const vector<Point>& humansCoordinate)
+	{
+		constexpr Point ashCoordinate(0, 0);
+		return GameReferee_Base_Tests::CreateGameState(ashCoordinate, zombiesCoordinate, humansCoordinate);
+	}
+
+	static GameReferee CreateReferee(const GameStatePtr& gameState)
+	{
+		return GameReferee_Base_Tests::CreateReferee(gameState);
+	}
+};
+
+TEST_F(GameReferee_Tests, UpdateZombieTargetAfterDestroyHuman)
+{
+	const auto gameState = CreateGameState(
+		vector{ Point(2000,2000) },
+		vector{ Point(2000, 2400), Point(2000, 2600) });
+	auto referee = CreateReferee(gameState.get());
+
+	referee.Turn(Point(0, 0));
+	referee.Turn(Point(0, 0));
 }
