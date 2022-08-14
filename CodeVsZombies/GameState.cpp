@@ -46,6 +46,11 @@ const Humans& GameState::GetHumans() const
 	return humans;
 }
 
+bool GameState::IsAliveHuman(const int id) const
+{
+	return humans.find(id) != humans.end();
+}
+
 const Zombie& GameState::GetZombie(const int id) const
 {
 	return zombies.at(id);

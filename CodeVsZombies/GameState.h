@@ -30,6 +30,7 @@ public:
     CVZ_EXPORT const Unit& GetAsh() const;
     const Unit& GetHuman(int id) const;
     CVZ_EXPORT const Humans& GetHumans() const;
+    bool IsAliveHuman(int id) const;
     const Zombie& GetZombie(int id) const;
     const Zombies& GetZombies() const;
     CVZ_EXPORT Zombies& GetZombies();
