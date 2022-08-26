@@ -3,7 +3,7 @@
 #include "IGameState.h"
 
 //TODO: Посмотреть происходят ли тормоза при частом копировании колекции зомби (тормоза на выделение памяти под колекцию)
-class GameState : IGameState
+class GameState : public IGameState
 {
     bool isEndGame;
     Humans humans;
@@ -42,4 +42,4 @@ public:
     CVZ_EXPORT void SetScore(int value) override;
 };
 
-using GameStatePtr = GameState*;
+using GameStatePtr = IGameState*;

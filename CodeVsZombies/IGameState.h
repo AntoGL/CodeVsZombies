@@ -8,6 +8,7 @@ using Zombies = std::unordered_map<int, Zombie>;
 
 class IGameState
 {
+public:
     CVZ_EXPORT virtual bool IsEndGame() const = 0;
     CVZ_EXPORT virtual void SetEndGame(bool value) = 0;
     CVZ_EXPORT virtual const Unit& GetAsh() const = 0;

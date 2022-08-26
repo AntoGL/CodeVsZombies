@@ -3,12 +3,12 @@
 
 class GameReferee
 {
-	GameState* game;
+	GameStatePtr game;
 
 public:
 	CVZ_EXPORT GameReferee() = default;
 
-	CVZ_EXPORT void SetGameState(GameState* gameState);
+	CVZ_EXPORT void SetGameState(GameStatePtr gameState);
 	CVZ_EXPORT void Turn(const Point& action);
 
 private:
