@@ -69,6 +69,9 @@
     <ClInclude Include="Fibonachi.h">
       <Filter>CvZ\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="IGameState.h">
+      <Filter>CvZ\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
