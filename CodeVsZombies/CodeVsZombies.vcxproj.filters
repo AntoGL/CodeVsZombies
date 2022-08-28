@@ -28,6 +28,9 @@
     <Filter Include="CvZ\Utils">
       <UniqueIdentifier>{08bef2e5-fed5-4aad-84c0-e8a693282001}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CvZ\Game\GameState">
+      <UniqueIdentifier>{fc45e403-c99b-4005-a1bd-e82a8217e012}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -44,12 +47,6 @@
     </ClInclude>
     <ClInclude Include="Zombie.h">
       <Filter>CvZ\Game\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStateReader.h">
-      <Filter>CvZ\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>CvZ\Game</Filter>
     </ClInclude>
     <ClInclude Include="GameConst.h">
       <Filter>CvZ\Game</Filter>
@@ -69,8 +66,14 @@
     <ClInclude Include="Fibonachi.h">
       <Filter>CvZ\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>CvZ\Game\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateReader.h">
+      <Filter>CvZ\Game\GameState</Filter>
+    </ClInclude>
     <ClInclude Include="IGameState.h">
-      <Filter>CvZ\Game</Filter>
+      <Filter>CvZ\Game\GameState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,12 +95,6 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>CvZ\Game\Units</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>CvZ\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStateReader.cpp">
-      <Filter>CvZ\Game</Filter>
-    </ClCompile>
     <ClCompile Include="ZombieKiller.cpp">
       <Filter>CvZ\Game</Filter>
     </ClCompile>
@@ -109,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="Fibonachi.cpp">
       <Filter>CvZ\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>CvZ\Game\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateReader.cpp">
+      <Filter>CvZ\Game\GameState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
