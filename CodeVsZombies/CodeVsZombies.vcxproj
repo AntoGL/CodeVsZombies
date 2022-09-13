@@ -158,8 +158,10 @@
     <ClInclude Include="GameConst.h" />
     <ClInclude Include="GameReferee.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateFactory.h" />
     <ClInclude Include="GameStateReader.h" />
     <ClInclude Include="IGameState.h" />
+    <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Unit.h" />

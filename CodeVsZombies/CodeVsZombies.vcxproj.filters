@@ -31,6 +31,9 @@
     <Filter Include="CvZ\Game\GameState">
       <UniqueIdentifier>{fc45e403-c99b-4005-a1bd-e82a8217e012}</UniqueIdentifier>
     </Filter>
+    <Filter Include="templates">
+      <UniqueIdentifier>{b732c822-2c33-4a6d-8616-41e155b6892b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -73,6 +76,12 @@
       <Filter>CvZ\Game\GameState</Filter>
     </ClInclude>
     <ClInclude Include="IGameState.h">
+      <Filter>CvZ\Game\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>templates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateFactory.h">
       <Filter>CvZ\Game\GameState</Filter>
     </ClInclude>
   </ItemGroup>
