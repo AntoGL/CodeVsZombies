@@ -53,9 +53,8 @@ std::vector<Turn> ZombieKiller::Calculate(const GameState& gameState)
 	static GameReferee referee;
 	for (const auto& p : moves)
 	{
-		auto copy = std::make_shared<GameState>(gameState);
-		turns.push_back(Turn{ p, copy });
-		referee.SetGameState(copy.get());
+		turns.emplace_back(p, gameState);
+		referee.SetGameState(turns.back().gameState.get());
 		referee.Turn(p);
 	}
 
@@ -85,9 +84,8 @@ std::vector<Turn> ZombieKiller::Calculate(const Turn& turn)
 	static GameReferee referee;
 	for (const auto& p : moves)
 	{
-		auto copy = std::make_shared<GameState>(gameState);
-		turns.emplace_back(Turn{ turn.fistMove, copy });
-		referee.SetGameState(copy.get());
+		turns.emplace_back(turn.fistMove, gameState);
+		referee.SetGameState(turns.back().gameState.get());
 		referee.Turn(p);
 	}
 
@@ -114,4 +112,28 @@ Point ZombieKiller::GetMovePoint(const GameState& gameState)
 	}
 
 	return res;
+}
+
+
+Turn::Turn(const Point& point, const GameState& gameState)
+	: fistMove(point)
+	, gameState(std::make_unique<GameState>(gameState))
+{
+	
+}
+
+Turn::Turn(const Turn& source)
+	: fistMove(source.fistMove)
+	, gameState(std::make_unique<GameState>(*source.gameState))
+{
+	
+}
+
+Turn& Turn::operator=(const Turn& source)
+{
+	fistMove = source.fistMove;
+	gameState = nullptr;
+	gameState = std::make_unique<GameState>(*source.gameState);
+
+	return *this;
 }

@@ -5,7 +5,12 @@
 struct Turn
 {
 	Point fistMove;
-	std::shared_ptr<GameState> gameState;
+	std::unique_ptr<GameState> gameState;
+
+	Turn(const Point& point, const GameState& gameState);
+
+	Turn(const Turn& source);
+	Turn& operator=(const Turn& source);
 };
 
 class ZombieKiller

@@ -6,7 +6,7 @@
 #include "GameConst.h"
 #include "Vector.h"
 
-void GameReferee::SetGameState(GameState* gameState)
+void GameReferee::SetGameState(GameStatePtr gameState)
 {
 	game = gameState;
 }
