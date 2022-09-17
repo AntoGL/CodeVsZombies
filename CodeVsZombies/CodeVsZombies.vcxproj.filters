@@ -84,6 +84,9 @@
     <ClInclude Include="GameStateFactory.h">
       <Filter>CvZ\Game\GameState</Filter>
     </ClInclude>
+    <ClInclude Include="GameStateProxy.h">
+      <Filter>CvZ\Game\GameState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -120,6 +123,9 @@
       <Filter>CvZ\Game\GameState</Filter>
     </ClCompile>
     <ClCompile Include="GameStateReader.cpp">
+      <Filter>CvZ\Game\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateProxy.cpp">
       <Filter>CvZ\Game\GameState</Filter>
     </ClCompile>
   </ItemGroup>
