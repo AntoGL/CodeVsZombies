@@ -1,5 +1,6 @@
-#include "pch.h"
+//#include "../pch.h"
 #include "Point.h"
+#include "gtest/gtest.h"
 
 using namespace testing;
 using namespace std;

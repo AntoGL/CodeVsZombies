@@ -90,6 +90,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -107,6 +108,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +144,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -159,6 +162,7 @@
     <ClInclude Include="GameReferee.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateFactory.h" />
+    <ClInclude Include="GameStateProxy.h" />
     <ClInclude Include="GameStateReader.h" />
     <ClInclude Include="IGameState.h" />
     <ClInclude Include="ObjectPool.h" />
@@ -174,6 +178,7 @@
     <ClCompile Include="Fibonachi.cpp" />
     <ClCompile Include="GameReferee.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateProxy.cpp" />
     <ClCompile Include="GameStateReader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
