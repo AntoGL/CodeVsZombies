@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "../pch.h"
 #include "GameReferee.h"
 #include "GameConst.h"
 
@@ -72,7 +72,7 @@ struct GameReferee_MoveAsh_Tests : GameReferee_Base_Tests, TestWithParam<tuple<P
 	}
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	PointInMoveRange_MoveToPoint,
 	GameReferee_MoveAsh_Tests,
 		Values(
@@ -92,7 +92,7 @@ INSTANTIATE_TEST_CASE_P(
 		)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	PointOutMoveRange_MoveToNearestPoint,
 	GameReferee_MoveAsh_Tests,
 	Values(
@@ -134,7 +134,7 @@ public:
 	}
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	ZombieShouldMoveToAsh,
 	GameReferee_MoveZombie_Tests,
 	Values(
@@ -161,7 +161,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	ZombieShouldMoveToNearesHuman,
 	GameReferee_MoveZombie_Tests,
 	Values(
@@ -188,7 +188,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	DistanceToHumanLessMoveRange_MoveToHumanCoordinate,
 	GameReferee_MoveZombie_Tests,
 	Values(
@@ -240,7 +240,7 @@ public:
 	}
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	ZombieInAshAtackRange_ShouldBeDestroyed,
 	GameReferee_DestoyZombie_Tests,
 	Values(
@@ -255,7 +255,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	ZombieOutAshAtackRange_ShouldBeAlive,
 	GameReferee_DestoyZombie_Tests,
 	Values(
@@ -305,7 +305,7 @@ public:
 	}
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	HumanInZombieAtackRange_ShouldBeDestroyed,
 	GameReferee_DestroyHuman_Tests,
 	Values(
@@ -332,7 +332,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	HumanOutZombieAtackRange_ShouldBeAlive,
 	GameReferee_DestroyHuman_Tests,
 	Values(
@@ -384,7 +384,7 @@ public:
 	}
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	AllHumanDestroyed_EndGame,
 	GameReferee_EndGame_Tests,
 	Values(
@@ -411,7 +411,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	AnyHumanAlive_GameContinuing,
 	GameReferee_EndGame_Tests,
 	Values(
@@ -440,7 +440,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	AllZombieDestroyed_EndGame,
 	GameReferee_EndGame_Tests,
 	Values(
@@ -458,7 +458,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	AnyZombieAlive_GameContinuing,
 	GameReferee_EndGame_Tests,
 	Values(
@@ -510,7 +510,7 @@ public:
 	}
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	SeveralHumans_ScoreEqualNumberOfHumansSquaredx10,	// NumberOfHumans * NumberOfHumans * 10
 	GameReferee_Score_Tests,
 	Values(
@@ -541,7 +541,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	SeveralZombie_ScoreEqualFibNumberOfDestroyedZobiesSub2,	// Fib(NumberOfDestroyedZobies + 2) * 10
 	GameReferee_Score_Tests,
 	Values(
@@ -572,7 +572,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	SeveralZombieAndSeveralHumans_ScoreEqualNumberOfHumansSquaredFibNumberOfDestroyedZobiesSub2x10,	// NumberOfHumans * NumberOfHumans * Fib(NumberOfDestroyedZobies + 2) * 10
 	GameReferee_Score_Tests,
 	Values(

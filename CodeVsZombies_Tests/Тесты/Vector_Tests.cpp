@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "../pch.h"
 #include "Vector.h"
 
 using namespace std;
@@ -10,7 +10,7 @@ struct Vector_ConstructorDoubleDouble_Fixture : TestWithParam<tuple<double, doub
 };
 
 const auto VectorCoordinates = Values(0, 1, -1, 100, 1000, INT32_MAX, INT32_MIN, 0.1, 0.5, 11.3);
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	Different_Coordinates,
 	Vector_ConstructorDoubleDouble_Fixture,
 	Combine(VectorCoordinates, VectorCoordinates));
@@ -29,7 +29,7 @@ struct Vector_OperatorSumPointVector_Fixture : TestWithParam<tuple<Point, Vector
 	
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	OperatorSum_Integer,
 	Vector_OperatorSumPointVector_Fixture,
 	Values(
@@ -44,7 +44,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	OperatorSum_Real,
 	Vector_OperatorSumPointVector_Fixture,
 	Values(
@@ -80,7 +80,7 @@ struct Vector_OperatorDifPointPoint_Fixture : TestWithParam<tuple<Point, Point, 
 
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	OperatorDiff,
 	Vector_OperatorDifPointPoint_Fixture,
 	Values(
@@ -110,7 +110,7 @@ struct Vector_SetLength_Fixture : TestWithParam<tuple<Vector, double, Vector>>
 	
 };
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	SetLength,
 	Vector_SetLength_Fixture,
 	Values(
@@ -122,7 +122,7 @@ INSTANTIATE_TEST_CASE_P(
 	)
 );
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	ReturnZeroVector,
 	Vector_SetLength_Fixture,
 	Combine(
@@ -158,7 +158,7 @@ struct Vector_Angle_Tests : TestWithParam<tuple<Vector, Vector, double>>
 
 #define Angle45 std::sqrt(2) / 2
 
-INSTANTIATE_TEST_CASE_P(
+INSTANTIATE_TEST_SUITE_P(
 	SimpleTests,
 	Vector_Angle_Tests,
 	Values(
