@@ -54,33 +54,40 @@ Zombies& GameStateProxy::GetZombies()
 
 void GameStateProxy::Clear()
 {
+	gameState.Clear();
 }
 
 void GameStateProxy::SetAshCoordinate(const int x, const int y)
 {
+	gameState.SetAshCoordinate(x, y);
 }
 
 void GameStateProxy::AddHuman(const Unit& human)
 {
+	gameState.AddHuman(human);
 }
 
 void GameStateProxy::RemoveHuman(const int id)
 {
+	gameState.RemoveHuman(id);
 }
 
 void GameStateProxy::AddZombie(const Zombie& zombie)
 {
+	gameState.AddZombie(zombie);
 }
 
 void GameStateProxy::RemoveZombie(const int id)
 {
+	gameState.RemoveZombie(id);
 }
 
 int GameStateProxy::GetScore() const
 {
-	return 0;
+	return gameState.GetScore();
 }
 
 void GameStateProxy::SetScore(const int value)
 {
+	gameState.SetScore(value);
 }

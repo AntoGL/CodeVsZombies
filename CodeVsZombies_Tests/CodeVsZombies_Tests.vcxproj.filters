@@ -35,6 +35,9 @@
     <ClCompile Include="Тесты\GameReferee_Tests.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Тесты\GameStateProxy_Tests.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

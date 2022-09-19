@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="..\packages\gmock.1.11.0\lib\native\src\gmock\src\gmock_main.cc" />
     <ClCompile Include="Тесты\GameReferee_Tests.cpp" />
+    <ClCompile Include="Тесты\GameStateProxy_Tests.cpp" />
     <ClCompile Include="Тесты\ObjectPool_Tests.cpp" />
     <ClCompile Include="Тесты\Point_Tests.cpp" />
     <ClCompile Include="Тесты\Vector_Tests.cpp" />
